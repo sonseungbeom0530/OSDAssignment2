@@ -606,7 +606,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
       takePhoto();
     }
 
-    /*if (IntentChecker.checkAction(i, ACTION_FAB_TAKE_FILE)) {
+    if (IntentChecker.checkAction(i, ACTION_FAB_TAKE_FILE)) {
       if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) ==
               PackageManager.PERMISSION_GRANTED) {
         startGetContentAction();
@@ -614,7 +614,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
         askReadExternalStoragePermission();
       }
     }
-*/
+
     // Handles third party apps requests of sharing
     if (IntentChecker.checkAction(i, Intent.ACTION_SEND, Intent.ACTION_SEND_MULTIPLE, INTENT_GOOGLE_NOW)
         && i.getType() != null) {
@@ -2306,7 +2306,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
   /**
    * Quick Add URL Dialog Show
    */
- /* private void showAddURLPopup() {
+  private void showAddURLPopup() {
     LayoutInflater inflater = mainActivity.getLayoutInflater();
     final View v = inflater.inflate(R.layout.dialog_add_url, null);
     final EditText etURL = v.findViewById(R.id.et_dialog_url);
@@ -2320,16 +2320,16 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
             .negativeText("CANCEL")
             .negativeColorRes(R.color.colorAccent)
             .onPositive((dialog12, which) -> {
-              // ADD버튼 Event
+              // Add button Event
               if(etURL.getText().toString().trim().isEmpty()){
-                // 문자를 입력하지 않았을 경우
+                // If user do not enter any characters
                 Toast.makeText(getContext(), "Enter URL", Toast.LENGTH_SHORT).show();
               }else if(!Patterns.WEB_URL.matcher(etURL.getText().toString()).matches()){
-                // URL 형식에 맞게 입력하지 않았을 경우
+                // If user do not type it in the URL format
                 Toast.makeText(getContext(), "Enter valid URL", Toast.LENGTH_SHORT).show();
               }else{
-                // 정상으로 URL을 입력했을 경우
-                // 상세메모에 URL을 추가 후 메모 모듈에서 URL Link Setting
+                // If user enter the URL as OK
+                // Set URL Link in Note Module after adding URL to detailed note
                 String oriText = content.getText().toString();
                 content.setText(oriText+"\n"+etURL.getText().toString());
                 content.gatherLinksForText();
@@ -2338,7 +2338,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
               dialog12.dismiss();
             })
             .onNegative((dialog13, which) -> {
-             // CANCEL 버튼 Event
+             // CANCEL button Event
               dialog13.dismiss();
             })
             .build();
@@ -2359,7 +2359,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
     dialog.show();
 
     new Handler().postDelayed(() -> KeyboardUtils.showKeyboard(etURL), 100);
-  }*/
+  }
 
   private static class OnGeoUtilResultListenerImpl implements OnGeoUtilResultListener {
 
@@ -2565,9 +2565,9 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
           setBottomColorChecker(5);
           noteTmp.getBottomColorData().setColor(selectColor + "");
           break;
-        /*case R.id.ll_detail_bottom_add_url:
+        case R.id.ll_detail_bottom_add_url:
           showAddURLPopup();
-          break;*/
+          break;
       }
     }
 
