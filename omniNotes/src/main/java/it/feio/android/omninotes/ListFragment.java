@@ -173,12 +173,12 @@ public class ListFragment extends BaseFragment implements OnViewTouchedListener,
   ProgressWheel progressWheel;
   @BindView(R.id.snackbar_placeholder)
   View snackBarPlaceholder;
-  /*@BindView(R.id.ll_list_bottom_add_note)
+  @BindView(R.id.ll_list_bottom_add_note)
   LinearLayout mLlAddNote;
   @BindView(R.id.ll_list_bottom_add_image)
   LinearLayout mLlAddImage;
   @BindView(R.id.ll_list_bottom_add_url)
-  LinearLayout mLlAddUrl;*/
+  LinearLayout mLlAddUrl;
 
   NoteViewHolder noteViewHolder;
 
@@ -292,7 +292,7 @@ public class ListFragment extends BaseFragment implements OnViewTouchedListener,
     initNotesList(mainActivity.getIntent());
     initFab();
     initTitle();
-    //initBottomBox();
+    initBottomBox();
     // Restores again DefaultSharedPreferences too reload in case of data erased from Settings
     prefs = mainActivity.getSharedPreferences(PREFS_NAME, Context.MODE_MULTI_PROCESS);
   }
@@ -1871,7 +1871,7 @@ public class ListFragment extends BaseFragment implements OnViewTouchedListener,
   /**
    * Initialzation Bottom Box
    */
-  /*private void initBottomBox(){
+  private void initBottomBox(){
     // click listener setting
     mLlAddNote.setOnClickListener(new ListBottomBoxOnClickListener());
     mLlAddImage.setOnClickListener(new ListBottomBoxOnClickListener());
@@ -1881,7 +1881,7 @@ public class ListFragment extends BaseFragment implements OnViewTouchedListener,
   /**
    * Quick Image Popup Show
    */
- /* private void showImagePopup () {
+ private void showImagePopup () {
     LayoutInflater inflater = mainActivity.getLayoutInflater();
     final View layout = inflater.inflate(R.layout.dialog_add_image, null);
 
@@ -1923,7 +1923,7 @@ public class ListFragment extends BaseFragment implements OnViewTouchedListener,
    * Quick Add URL Dialog Show
    * @param view
    */
- /* private void showAddURLPopup(View view) {
+   private void showAddURLPopup(View view) {
     LayoutInflater inflater = mainActivity.getLayoutInflater();
     final View v = inflater.inflate(R.layout.dialog_add_url, null);
     final EditText etDialog = v.findViewById(R.id.et_dialog_url);
@@ -1977,7 +1977,7 @@ public class ListFragment extends BaseFragment implements OnViewTouchedListener,
   /**
    * Bottom box Click Event
    */
-  /*@SuppressLint("InlinedApi")
+  @SuppressLint("InlinedApi")
   private class ListBottomBoxOnClickListener implements View.OnClickListener {
 
     @Override
@@ -1995,6 +1995,6 @@ public class ListFragment extends BaseFragment implements OnViewTouchedListener,
           break;
       }
     }
-  }*/
+  }
 
 }
