@@ -75,12 +75,12 @@ public class NoteLoaderTask extends AsyncTask<Object, Void, List<Note>> {
       try {
         Method method = db.getClass().getDeclaredMethod(methodName, paramClass);
         List<Note> notes = (List<Note>) method.invoke(db, paramClass[0].cast(methodArgs));
-        for(Note note : notes){
+        /*for(Note note : notes){
           // Bottom Color Data를 Setting
           BottomBoxColorData bottomColorData = BottomBoxColorDbHelper.getInstance().getColor(note.getCreation());
           note.setBottomColorData(bottomColorData);
         }
-        return notes;
+        return notes;*/
       } catch (Exception e) {
         throw new NotesLoadingException(ERROR_RETRIEVING_NOTES, e);
       }

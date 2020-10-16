@@ -61,12 +61,12 @@ public class SaveNoteTask extends AsyncTask<Note, Void, Note> {
       note.setReminderFired(false);
     }
     note = DbHelper.getInstance().updateNote(note, updateLastModification);
-    if(note.getBottomColorData().getNoteID() == null){
+    /*if(note.getBottomColorData().getNoteID() == null){
       // noteID 가 없을 경우 새로 Setting
       note.getBottomColorData().setNoteID(note.getCreation()+"");
     }
     // 선택한 Bottom Color를 DB에 저장시킨다.
-    BottomBoxColorDbHelper.getInstance().updateBottomColor(note.getBottomColorData());
+    BottomBoxColorDbHelper.getInstance().updateBottomColor(note.getBottomColorData());*/
     if (reminderMustBeSet) {
       ReminderHelper.addReminder(context, note);
     }

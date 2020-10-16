@@ -38,8 +38,8 @@ public class NoteViewHolder extends ViewHolder {
 
   @BindView(R.id.root)
   public View root;
-  @BindView(R.id.v_background)
-  public View mVBackground;
+ /* @BindView(R.id.v_background)
+  public View mVBackground;*/
   @BindView(R.id.card_layout)
   public View cardLayout;
   @BindView(R.id.category_marker)

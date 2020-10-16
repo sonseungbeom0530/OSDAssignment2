@@ -104,9 +104,9 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
     }
   }
 
-  private void initBackground (BottomBoxColorData bottomColorData, NoteViewHolder holder) {
+  /*private void initBackground (BottomBoxColorData bottomColorData, NoteViewHolder holder) {
     holder.mVBackground.setBackgroundColor(Integer.parseInt(bottomColorData.getColor()));
-  }
+  }*/
 
 
   public List<Note> getNotes () {

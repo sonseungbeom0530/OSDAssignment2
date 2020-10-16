@@ -252,7 +252,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
   ViewManager detailWrapperView;
   @BindView(R.id.snackbar_placeholder)
   View snackBarPlaceholder;
-
+/*
   @BindView(R.id.v_detail_content_marker)
   View mTopColorMarker;
   @BindView(R.id.ll_root_detail_bottom_box)
@@ -283,7 +283,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
   ImageView mIvBottomChk6;
   @BindView(R.id.ll_detail_bottom_add_url)
   LinearLayout mLlBottomAddURL;
-
+*/
   private View toggleChecklistView;
   private Uri attachmentUri;
   private AttachmentAdapter mAttachmentAdapter;
@@ -319,7 +319,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
   private ArrayList<String> mergedNotesIds;
   private MainActivity mainActivity;
   /**Color change flag*/
-  private boolean mIsBottomColorChange = false;
+  //private boolean mIsBottomColorChange = false;
   TextLinkClickListener textLinkClickListener = new TextLinkClickListener() {
     @Override
     public void onTextLinkClick (View view, final String clickedString, final String url) {
@@ -606,7 +606,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
       takePhoto();
     }
 
-    if (IntentChecker.checkAction(i, ACTION_FAB_TAKE_FILE)) {
+    /*if (IntentChecker.checkAction(i, ACTION_FAB_TAKE_FILE)) {
       if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) ==
               PackageManager.PERMISSION_GRANTED) {
         startGetContentAction();
@@ -614,7 +614,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
         askReadExternalStoragePermission();
       }
     }
-
+*/
     // Handles third party apps requests of sharing
     if (IntentChecker.checkAction(i, Intent.ACTION_SEND, Intent.ACTION_SEND_MULTIPLE, INTENT_GOOGLE_NOW)
         && i.getType() != null) {
@@ -691,7 +691,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
 
     initViewFooter();
 
-    initBottomBox();
+    //initBottomBox();
   }
 
   private void initViewFooter () {
@@ -1650,13 +1650,13 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
       note.setLatitude(noteTmp.getLatitude());
       note.setLongitude(noteTmp.getLongitude());
     }
-    if(mIsBottomColorChange){
+    /*if(mIsBottomColorChange){
       //color changed? Yes
       return false;
     }else {
       //color changed? No
       return !noteTmp.isChanged(note) || (noteTmp.isLocked() && !noteTmp.isPasswordChecked());
-    }
+    }*/
   }
 
   /**
@@ -2250,7 +2250,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
   /**
    * Initialzation Bottm Box
    */
-  private void initBottomBox() {
+  /*private void initBottomBox() {
     // click listener setting
     mBottomColor1.setOnClickListener(new DetailBottomBoxOnClickListener());
     mBottomColor2.setOnClickListener(new DetailBottomBoxOnClickListener());
@@ -2296,7 +2296,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
       mTopColorMarker.setBackgroundColor(color);
     }
   }
-
+*/
   public void onEventMainThread (PushbulletReplyEvent pushbulletReplyEvent) {
     String text = getNoteContent() + System.getProperty("line.separator") + pushbulletReplyEvent.message;
     content.setText(text);
@@ -2306,7 +2306,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
   /**
    * Quick Add URL Dialog Show
    */
-  private void showAddURLPopup() {
+ /* private void showAddURLPopup() {
     LayoutInflater inflater = mainActivity.getLayoutInflater();
     final View v = inflater.inflate(R.layout.dialog_add_url, null);
     final EditText etURL = v.findViewById(R.id.et_dialog_url);
@@ -2359,7 +2359,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
     dialog.show();
 
     new Handler().postDelayed(() -> KeyboardUtils.showKeyboard(etURL), 100);
-  }
+  }*/
 
   private static class OnGeoUtilResultListenerImpl implements OnGeoUtilResultListener {
 
@@ -2522,7 +2522,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
   /**
    * Detail BottomBox Click event
    */
-  @SuppressLint("InlinedApi")
+  /*@SuppressLint("InlinedApi")
   private class DetailBottomBoxOnClickListener implements OnClickListener {
 
     @Override
@@ -2575,7 +2575,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
      * Bottom Color Checker
      * @param i Check index
      */
-    private void setBottomColorChecker(int i){
+   /* private void setBottomColorChecker(int i){
       mIsBottomColorChange = true;
       switch (i) {
         case 0:
@@ -2628,7 +2628,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
           break;
       }
     }
-  }
+  }*/
 }
 
 
