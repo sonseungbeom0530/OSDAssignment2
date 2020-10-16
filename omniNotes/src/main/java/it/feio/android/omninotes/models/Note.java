@@ -31,7 +31,7 @@ public class Note extends BaseNote implements Parcelable {
    * Parcelable interface must also have a static field called CREATOR, which is an object implementing the
    * Parcelable.Creator interface. Used to un-marshal or de-serialize object from Parcel.
    */
- // private BottomBoxColorData bottomColorData;
+  private BottomBoxColorData bottomColorData;
 
   public static final Parcelable.Creator<Note> CREATOR = new Parcelable.Creator<Note>() {
 
@@ -52,13 +52,13 @@ public class Note extends BaseNote implements Parcelable {
     super();
   }
 
- /* public BottomBoxColorData getBottomColorData() {
+  public BottomBoxColorData getBottomColorData() {
     return bottomColorData;
   }
 
   public void setBottomColorData(BottomBoxColorData bottomColorData) {
     this.bottomColorData = bottomColorData;
-  }*/
+  }
 
   public Note (Long creation, Long lastModification, String title, String content, Integer archived,
       Integer trashed, String alarm, String recurrenceRule, Integer reminderFired, String latitude, String longitude,

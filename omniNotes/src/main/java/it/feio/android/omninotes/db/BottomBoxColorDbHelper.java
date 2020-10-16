@@ -18,7 +18,7 @@ import it.feio.android.omninotes.models.BottomBoxColorData;
  */
 public class BottomBoxColorDbHelper extends SQLiteOpenHelper {
 
-    /*private final Context mContext;
+    private final Context mContext;
     private static BottomBoxColorDbHelper instance = null;
     private SQLiteDatabase db;
 
@@ -76,7 +76,7 @@ public class BottomBoxColorDbHelper extends SQLiteOpenHelper {
      * BottomColor to be updated or inserted
      * New BottomColor insertion
      */
-    /*public void updateBottomColor(BottomBoxColorData bottomColorData) {
+    public void updateBottomColor(BottomBoxColorData bottomColorData) {
         String noteId = bottomColorData.getNoteID();
         String color = bottomColorData.getColor();
         long check = getColorID(noteId);
@@ -95,7 +95,7 @@ public class BottomBoxColorDbHelper extends SQLiteOpenHelper {
     /**
      *Delete row
      */
-    /*public long deleteBottomColor (long noteID) {
+    public long deleteBottomColor (long noteID) {
         long deleted;
 
         SQLiteDatabase db = getDatabase(true);
@@ -111,7 +111,7 @@ public class BottomBoxColorDbHelper extends SQLiteOpenHelper {
      * @param val
      * @return
      */
-   /* private long getColorID(String val){
+   private long getColorID(String val){
         long result = -1;
         SQLiteDatabase db = getDatabase(false);
         String sql = String.format("select %s from %s where %s = '%s'",
@@ -134,7 +134,7 @@ public class BottomBoxColorDbHelper extends SQLiteOpenHelper {
      * Save data in DB.
      * @param bottomColorData
      */
-    /*private void insert(BottomBoxColorData bottomColorData){
+    private void insert(BottomBoxColorData bottomColorData){
         SQLiteDatabase db = getDatabase(true);
         ContentValues row = new ContentValues();
         row.put( BottomBoxColorContract.Colors._ID, bottomColorData.getNoteID());
@@ -150,7 +150,7 @@ public class BottomBoxColorDbHelper extends SQLiteOpenHelper {
      * @param noteID
      * @return BottomBoxColorData
      */
-    /*public BottomBoxColorData getColor(long noteID){
+    public BottomBoxColorData getColor(long noteID){
         String query = "SELECT "+ BottomBoxColorContract.Colors.NOTE_ID + ","
                 + BottomBoxColorContract.Colors.COLOR+" FROM " + BottomBoxColorContract.Colors.TABLE_NAME
                 + " WHERE " + BottomBoxColorContract.Colors.NOTE_ID + " = " + noteID;;
@@ -176,9 +176,9 @@ public class BottomBoxColorDbHelper extends SQLiteOpenHelper {
      * Select DB
      * Search the current DB total value
      * For Only Dev(Development)
-     * 오직 개발용으로만 사용(DB에 어떤값이 저장되었는지 조회하기 위해
+     * Use only for development purposes (to inquire what values have been stored in the DB).
      */
-    /*public void getColorSelect(){
+    public void getColorSelect(){
         ArrayList<BottomBoxColorData> bottomColorDataArrayList = new ArrayList<>();
         String query = "SELECT "+ BottomBoxColorContract.Colors.NOTE_ID + ","
                 + BottomBoxColorContract.Colors.COLOR+" FROM " + BottomBoxColorContract.Colors.TABLE_NAME;
@@ -203,6 +203,6 @@ public class BottomBoxColorDbHelper extends SQLiteOpenHelper {
 
         }
     }
-*/
+
 
 }

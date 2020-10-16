@@ -1,6 +1,6 @@
 package it.feio.android.omninotes.models;
 
-/*import android.os.Parcel;
+import android.os.Parcel;
 import android.os.Parcelable;
 
 public class BottomBoxColorData implements Parcelable {

@@ -252,7 +252,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
   ViewManager detailWrapperView;
   @BindView(R.id.snackbar_placeholder)
   View snackBarPlaceholder;
-/*
+
   @BindView(R.id.v_detail_content_marker)
   View mTopColorMarker;
   @BindView(R.id.ll_root_detail_bottom_box)
@@ -283,7 +283,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
   ImageView mIvBottomChk6;
   @BindView(R.id.ll_detail_bottom_add_url)
   LinearLayout mLlBottomAddURL;
-*/
+
   private View toggleChecklistView;
   private Uri attachmentUri;
   private AttachmentAdapter mAttachmentAdapter;
@@ -319,7 +319,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
   private ArrayList<String> mergedNotesIds;
   private MainActivity mainActivity;
   /**Color change flag*/
-  //private boolean mIsBottomColorChange = false;
+  private boolean mIsBottomColorChange = false;
   TextLinkClickListener textLinkClickListener = new TextLinkClickListener() {
     @Override
     public void onTextLinkClick (View view, final String clickedString, final String url) {
@@ -691,7 +691,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
 
     initViewFooter();
 
-    //initBottomBox();
+    initBottomBox();
   }
 
   private void initViewFooter () {
@@ -1650,13 +1650,13 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
       note.setLatitude(noteTmp.getLatitude());
       note.setLongitude(noteTmp.getLongitude());
     }
-    /*if(mIsBottomColorChange){
+    if(mIsBottomColorChange){
       //color changed? Yes
       return false;
     }else {
       //color changed? No
       return !noteTmp.isChanged(note) || (noteTmp.isLocked() && !noteTmp.isPasswordChecked());
-    }*/
+    }
   }
 
   /**
@@ -2250,7 +2250,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
   /**
    * Initialzation Bottm Box
    */
-  /*private void initBottomBox() {
+  private void initBottomBox() {
     // click listener setting
     mBottomColor1.setOnClickListener(new DetailBottomBoxOnClickListener());
     mBottomColor2.setOnClickListener(new DetailBottomBoxOnClickListener());
@@ -2267,36 +2267,36 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
       public void onClick(View view) {
         // BottomBox Click Event
         if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
-          // Bottom Box가 확장 되지 않았을 경우를 Bottom Box 확장시킨다.
+          // If Bottom Box is not extended, expand Bottom Box.
           bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         } else {
-          // Bottom Box가 확장 되었 경우를 Bottom Box 축소시킨다.
+          // If Bottom Box is expanded, reduce Bottom Box.
           bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         }
       }
     });
     long noteID = 0;
-    // 새로생성한 note의 경우 note Creation값이 없음
+    // Note Creation value does not exist for newly created notes
     if(noteTmp.getCreation() != null){
-      // note Creation값이 있을 경우 noteID를 Setting
+      // Set note ID if note creation value is present
       noteID = noteTmp.getCreation();
     }
-    //noteID값이 0인경우 bottomColorData값이 null로 리턴된다.
+    //If the noteID value is 0, the botomColorData value is returned to null.
     BottomBoxColorData bottomColorData = BottomBoxColorDbHelper.getInstance().getColor(noteID);
     if(bottomColorData == null){
-      // bottomColorData가 Null일 경우 Default값으로 셋팅한다.
-      // Default값은 흰색이다.
+      // If the bottomColorData is null, set it to the Default value.
+      // Default value is white.
       noteTmp.setBottomColorData(new BottomBoxColorData());
       noteTmp.getBottomColorData().setColor(getContext().getColor(R.color.bottom_color_box6)+"");
     }else{
-      // bottomColorData가 Null 아닌경우 DB에서 Color값을 조회하여 Setting
+      // If bottomColorData is not null, check the color value in DB and set it.
       noteTmp.setBottomColorData(bottomColorData);
       int color = Integer.parseInt(noteTmp.getBottomColorData().getColor());
-      // DB에서 Color값으로 Background를 Setting
+      // Setting Background as Color Value in DB
       mTopColorMarker.setBackgroundColor(color);
     }
   }
-*/
+
   public void onEventMainThread (PushbulletReplyEvent pushbulletReplyEvent) {
     String text = getNoteContent() + System.getProperty("line.separator") + pushbulletReplyEvent.message;
     content.setText(text);
@@ -2522,7 +2522,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
   /**
    * Detail BottomBox Click event
    */
-  /*@SuppressLint("InlinedApi")
+  @SuppressLint("InlinedApi")
   private class DetailBottomBoxOnClickListener implements OnClickListener {
 
     @Override
@@ -2565,9 +2565,9 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
           setBottomColorChecker(5);
           noteTmp.getBottomColorData().setColor(selectColor + "");
           break;
-        case R.id.ll_detail_bottom_add_url:
+        /*case R.id.ll_detail_bottom_add_url:
           showAddURLPopup();
-          break;
+          break;*/
       }
     }
 
@@ -2575,7 +2575,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
      * Bottom Color Checker
      * @param i Check index
      */
-   /* private void setBottomColorChecker(int i){
+   private void setBottomColorChecker(int i){
       mIsBottomColorChange = true;
       switch (i) {
         case 0:
@@ -2628,7 +2628,7 @@ public class DetailFragment extends BaseFragment implements OnReminderPickedList
           break;
       }
     }
-  }*/
+  }
 }
 
 

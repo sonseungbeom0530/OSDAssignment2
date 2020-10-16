@@ -45,8 +45,8 @@ public class NoteProcessorTrash extends NoteProcessor {
     } else {
       ReminderHelper.addReminder(OmniNotes.getAppContext(), note);
     }
-    // Note ID값으로 설정한 Bottom Color값을 제거한다.
-   // BottomBoxColorDbHelper.getInstance().deleteBottomColor(note.getCreation());
+    // Remove the Bottom Color value set as Note ID value.
+    BottomBoxColorDbHelper.getInstance().deleteBottomColor(note.getCreation());
     DbHelper.getInstance().trashNote(note, trash);
   }
 }
