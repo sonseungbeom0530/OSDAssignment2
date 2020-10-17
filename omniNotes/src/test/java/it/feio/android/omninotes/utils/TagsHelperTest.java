@@ -125,4 +125,18 @@ public class TagsHelperTest {
     assertFalse(tags1.containsKey(newTag));
   }
 
+  @Test
+  public void removesTagsFromNoteWithSpecialChars () {
+    Tag tag = TAG1;
+    String text = "<>[],-.(){}!?\n\t text ";
+    String testString = text + tag.getText();
+
+    Pair<String, String> pair = TagsHelper.removeTag(testString, testString, singletonList(tag));
+
+    String expectedText = text.trim();
+
+    assertEquals(expectedText, pair.first);
+    assertEquals(expectedText, pair.second);
+  }
+
 }

@@ -31,6 +31,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.apache.commons.lang3.StringUtils;
 import rx.Observable;
 
@@ -93,26 +96,42 @@ public class TagsHelper {
 
   public static Pair<String, String> removeTag (String noteTitle, String noteContent, List<Tag> tagsToRemove) {
     String title = noteTitle, content = noteContent;
+    final String tagSeparator = "[ <>,-.()\\[\\]{}!?]";
+    final String tagReplacement = "";
     for (Tag tagToRemove : tagsToRemove) {
       if (StringUtils.isNotEmpty(title)) {
-        title = Observable.from(title.replaceAll(TAG_SPECIAL_CHARS_TO_REMOVE, " ").split("\\s"))
+        title = removeTagFromText(title, tagToRemove);
+        /*title = Observable.from(title.replaceAll(TAG_SPECIAL_CHARS_TO_REMOVE, " ").split("\\s"))
                           .map(String::trim)
                           .filter(s -> !s.matches(tagToRemove.getText()))
                           .reduce((s, s2) -> s + " " + s2)
                           .toBlocking()
-                          .singleOrDefault("");
+                          .singleOrDefault("");*/
       }
       if (StringUtils.isNotEmpty(content)) {
-        content = Observable.from(content.replaceAll(TAG_SPECIAL_CHARS_TO_REMOVE, " ").split("\\s"))
+        content = removeTagFromText(content, tagToRemove);
+        /*content = Observable.from(content.replaceAll(TAG_SPECIAL_CHARS_TO_REMOVE, " ").split("\\s"))
                             .map(String::trim)
                             .filter(s -> !s.matches(tagToRemove.getText()))
                             .reduce((s, s2) -> s + " " + s2)
                             .toBlocking()
-                            .singleOrDefault("");
+                            .singleOrDefault("");*/
       }
 
     }
     return new Pair<>(title, content);
+  }
+
+  private static String removeTagFromText (String text, Tag tag) {
+    final String tagSeparator = "[ <>,-.()\\[\\]{}!?]";
+    final String tagReplacement = "";
+    String regex =
+            "(?<=" + tagSeparator + "|^)" +
+                    tag.getText() +
+                    "(?=" + tagSeparator + "|$|\\v)";
+    Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+    Matcher matcher = pattern.matcher(text);
+    return matcher.replaceAll(tagReplacement).trim();
   }
 
 
